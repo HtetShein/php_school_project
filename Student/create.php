@@ -1,3 +1,9 @@
+<?php
+    require_once "../controller/StudentController.php";
+    $controller = new StudentController();
+    $courses = $controller->create();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,24 +54,23 @@
                 <label class="text-green-400" for="address">Address</label>
                 <textarea required class="placeholder:italic text-white placeholder:text-green-400 block bg-gray-900 w-full border border-slate-300 rounded-md mt-3 py-2 pl-9 pr-2 shadow-sm focus:outline-none focus:ring-1 sm:text-sm" placeholder="Enter your address" name="address"></textarea>
             </div>
-
             <div class="my-2 ">
+                <label class="text-green-400" for="course_id">Course</label>
+                <select required class="placeholder:italic text-white placeholder:text-green-400 block bg-gray-900 w-full border border-slate-300 rounded-md mt-3 py-2 pl-9 pr-2 shadow-sm focus:outline-none focus:ring-1 sm:text-sm" placeholder="Enter your course_id" name="course_id">
+                    <option value="" disabled selected></option>
+                    <?php foreach($courses as $course) : ?>
+                    <option value="<?php echo $course->id ?>"><?php echo $course->name ?></option>
+                    <?php endforeach; ?>
 
-                <input class="placeholder:italic  text-white placeholder:text-green-400 block bg-gray-900 w-full border border-slate-300 rounded-md mt-3 py-2 pl-9 pr-2 shadow-sm focus:outline-none focus:ring-1 sm:text-sm" placeholder="Enter your created at" type="hidden" name="created_at" />
+                </select>
             </div>
-
-            <div class="my-2 ">
-                <input class="placeholder:italic  text-white placeholder:text-green-400 block bg-gray-900 w-full border border-slate-300 rounded-md mt-3 py-2 pl-9 pr-2 shadow-sm focus:outline-none focus:ring-1 sm:text-sm" placeholder="Enter your phone updated at" type="hidden" name="updated_at" />
-            </div>
+            
 
             <div class="flex justify-between mt-4">
                 <a href="index.php">
                     <button class="bg-teal-400  px-3 py-1 rounded-md">back</button>
                 </a>
                 <button class="bg-green-400 text-white rounded-sm px-2 py-1">Register</button>
-
-
-
             </div>
 
 
